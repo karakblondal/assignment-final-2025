@@ -40,18 +40,12 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
         
-      - name: Start development server
-        run: |
-          npm run dev -- -p 3001 &
-          sleep 5
-          curl -s http://localhost:3001 > /dev/null || exit 1
-          echo "Server is running on port 3001"
-        
       - name: Run E2E tests
         run: npm run test:e2e -- --workers=4 --project=chromium
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: false
           PORT: 3001
+          CI: true
 
   deploy:
     needs: test
