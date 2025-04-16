@@ -1,8 +1,8 @@
-name: Deploy
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, "**" ]
+    branches: [ main]
   pull_request:
     branches: [ main ]
 
@@ -15,17 +15,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
-          cache: 'npm'
+          node-version: '20'
           
       - name: Install dependencies
-        run: npm install --legacy-peer-deps
+        run: npm install
         
       - name: Run linting
         run: npm run lint
         
       - name: Run type checking
         run: npm run typecheck
+        
+      - name: Setup Prisma
+        run: npx prisma generate
         
       - name: Run unit tests
         run: npm test
@@ -54,7 +56,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
           
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
