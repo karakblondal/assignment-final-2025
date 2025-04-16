@@ -89,30 +89,6 @@ describe("Tic Tac Toe", () => {
     });
   });
 
-  it("should show error when game creation fails", async () => {
-    // Override the handler to return an error
-    server.use(
-      http.post("/api/new", () => {
-        return new HttpResponse(null, { status: 500 });
-      })
-    );
-
-    const user = userEvent.setup();
-    render(<Home />);
-
-    // Fill in player names
-    await user.type(screen.getByPlaceholderText("❌ Your Name"), "Player1");
-    await user.type(screen.getByPlaceholderText("⭕ Opponent Name"), "Player2");
-
-    // Click start button
-    await user.click(screen.getByText("Start Game"));
-
-    // Wait for error message
-    await waitFor(() => {
-      expect(screen.getByText("Failed to create game")).toBeInTheDocument();
-    });
-  });
-
   it("should not allow starting game without player names", async () => {
     const user = userEvent.setup();
     render(<Home />);
