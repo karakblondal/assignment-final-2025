@@ -83,19 +83,10 @@ Good luck and Have fun :)
 - [Production Deployment](https://assignment-final-2024.vercel.app)
 - [Preview Deployment](https://assignment-final-2024-git-main.vercel.app)
 
-# Tic Tac Toe
 
 ## Datadog Dashboard
 
-Hér er yfirlit yfir heilsu forritsins:
 
 ![Datadog Dashboard](./public/datadog-dashboard.png)
 
-Þessi dashboard sýnir:
-- Page Views
-- Error Rate
-- Average Page Load Time
-- User Sessions
-- Custom Actions
-- Resource Loading Times
-- Network Requests
+
