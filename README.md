@@ -77,3 +77,8 @@ Add me (arnif) as collaborator to both repositories. Add a screenshot of your Da
 Also make sure to send the GitHub link to this repository in Canvas when handing in the assignment.
 
 Good luck and Have fun :)
+
+## Deployment Links
+
+- [Production Deployment](https://assignment-final-2024.vercel.app)
+- [Preview Deployment](https://assignment-final-2024-git-main.vercel.app)
