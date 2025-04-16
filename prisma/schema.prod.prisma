@@ -1,4 +1,4 @@
-// This is your Prisma schema file,
+// This is your Prisma schema file for production,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
@@ -7,8 +7,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  url      = env("PRODUCTION_DATABASE_URL")
+  directUrl = env("PRODUCTION_DIRECT_URL")
 }
 
 model Game {
@@ -19,4 +19,4 @@ model Game {
   winner    String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-}
+} 
