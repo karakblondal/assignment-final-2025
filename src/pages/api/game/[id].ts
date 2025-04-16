@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { Game } from "../../lib/gameStore";
+import { Game, getGameById, updateGame } from "../../../lib/gameStore";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +13,7 @@ export default async function handler(
 
   if (req.method === "GET") {
     try {
-      const game = await Game.get(id);
+      const game = await getGameById(id);
       if (!game) {
         return res.status(404).json({ error: "Game not found" });
       }
@@ -26,7 +26,7 @@ export default async function handler(
   if (req.method === "PUT") {
     try {
       const { moves } = req.body;
-      const game = await Game.update(id, moves);
+      const game = await updateGame(id, moves);
       if (!game) {
         return res.status(404).json({ error: "Game not found" });
       }
