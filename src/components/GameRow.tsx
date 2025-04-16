@@ -25,6 +25,7 @@ export function GameRow({ game }: Props) {
               {getPlayerNameFromSign(Sign.O, game)}
               {winner === Sign.O ? "🎉" : null}
             </div>
+            {winner === "draw" && <div>🤝 Jafntefli</div>}
           </div>
           <div className={styles.dateFromNow}>
             Created: {moment(game.createdAt).fromNow()}

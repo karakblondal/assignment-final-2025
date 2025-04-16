@@ -20,6 +20,12 @@ export function calculateWinner(
       return squares[a];
     }
   }
+
+  // Check for a draw: if every square is filled and no winner is found.
+  if (squares.every(square => square === Sign.X || square === Sign.O)) {
+    return "draw";
+  }
+  
   return null;
 }
 

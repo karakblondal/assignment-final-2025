@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { Sign } from "../constants";
-import { calculateWinner, getWhosTurnItIs, getPlayerNameFromSign } from "../gameUtils";
-import { Game } from "../../lib/gameStore";
+import { Sign } from "../utils/constants";
+import { calculateWinner, getWhosTurnItIs, getPlayerNameFromSign } from "../utils/gameUtils";
+import { Game } from "../lib/gameStore";
 
 describe("gameUtils", () => {
   describe("calculateWinner", () => {
@@ -95,4 +95,4 @@ describe("gameUtils", () => {
       expect(getPlayerNameFromSign("invalid", game)).toBe("");
     });
   });
-});
+}); 

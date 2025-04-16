@@ -9,6 +9,15 @@ interface Props {
 }
 
 export function WinnerAnnouncement({ winner, game }: Props) {
+  if (winner === "draw") {
+    return (
+      <h1 className={styles.title}>
+        🤝
+        <div>Jafntefli!</div>
+      </h1>
+    );
+  }
+  
   return (
     <h1 className={styles.title}>
       🎉🎊🍾🏆
