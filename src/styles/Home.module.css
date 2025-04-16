@@ -31,6 +31,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  text-align: center;
 }
 
 .title,
@@ -40,41 +41,53 @@
 
 .grid {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   flex-wrap: wrap;
   max-width: 800px;
   margin-top: 3rem;
 }
 
 .form {
-  align-items: center;
-  justify-content: center;
   display: flex;
   flex-direction: column;
-  width: 600px;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
 .input {
-  margin: 1rem;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 2px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  width: 85%;
+  width: 100%;
+  max-width: 300px;
 }
 
 .startButton {
-  padding: 1.5rem;
-  color: #fafafa;
-  background-color: #338ef5;
-  border: 1px solid #eaeaea;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  background-color: #0070f3;
+  color: white;
+  border: none;
   border-radius: 10px;
-  font-size: 1.25rem;
-  line-height: 1.5;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.startButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.startButton:hover:not(:disabled) {
+  background-color: #0051b3;
+}
+
+.error {
+  color: red;
+  margin: 0;
+  font-size: 1rem;
 }

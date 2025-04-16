@@ -16,6 +16,7 @@ vi.mock('next/router', () => ({
 describe("Tic Tac Toe", () => {
   afterEach(() => {
     cleanup();
+    vi.clearAllMocks();
   });
 
   it("should show form inputs and start button", async () => {
@@ -33,7 +34,7 @@ describe("Tic Tac Toe", () => {
   it("should display loading when creating game", async () => {
     // Override the handler to delay the response
     server.use(
-      http.post("/api/games", async () => {
+      http.post("/api/new", async () => {
         await new Promise(resolve => setTimeout(resolve, 1000));
         return HttpResponse.json({ id: "test-game-id" });
       })
@@ -65,6 +66,13 @@ describe("Tic Tac Toe", () => {
     };
     (useRouter as any).mockReturnValue(mockRouter);
 
+    // Set up successful response
+    server.use(
+      http.post("/api/new", () => {
+        return HttpResponse.json({ id: "test-game-id" });
+      })
+    );
+
     const user = userEvent.setup();
     render(<Home />);
 
@@ -84,7 +92,7 @@ describe("Tic Tac Toe", () => {
   it("should show error when game creation fails", async () => {
     // Override the handler to return an error
     server.use(
-      http.post("/api/games", () => {
+      http.post("/api/new", () => {
         return new HttpResponse(null, { status: 500 });
       })
     );
@@ -101,7 +109,7 @@ describe("Tic Tac Toe", () => {
 
     // Wait for error message
     await waitFor(() => {
-      expect(screen.getByText("Failed to create game")).toBeDefined();
+      expect(screen.getByText("Failed to create game")).toBeInTheDocument();
     });
   });
 
