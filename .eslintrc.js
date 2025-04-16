@@ -1,7 +1,12 @@
 module.exports = {
   extends: ['next/core-web-vitals'],
-  plugins: ['eslint-plugin-eslint-no-moment'],
+  plugins: ['import'],
   rules: {
-    'eslint-plugin-eslint-no-moment/no-moment': 'error'
+    'no-restricted-imports': ['error', {
+      'paths': [{
+        'name': 'moment',
+        'message': 'Please use date-fns instead of moment.js'
+      }]
+    }]
   }
 }; 
